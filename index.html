@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaikhah Alnaimy — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-dark: #0F1410;
+    --paper: #FAF8F3;
+    --coral: #E8745C;
+    --sage-deep: #2D3B2E;
+    --sage-mid: #8FA68F;
+    --sage-line: #D8DCD1;
+    --tag-bg: #EFEDE4;
+    --max: 800px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--paper);
+    color: var(--ink-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--coral); text-decoration: none; border-bottom: 1px solid currentColor; opacity: .85; transition: opacity .2s; }
+  a:hover{ opacity: 1; }
+
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* ===== Hero (dark) ===== */
+  .hero{
+    background: var(--ink-dark);
+    color: var(--paper);
+    padding: 90px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .wrap{ position: relative; z-index: 2; }
+  .hero .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--coral);
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pulse-dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--coral);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(0.7); }
+  }
+
+  .hero h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(52px, 11vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    margin-bottom: 18px;
+  }
+  .hero .role{
+    font-size: 20px;
+    color: var(--sage-mid);
+    font-weight: 500;
+    margin-bottom: 36px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .ecg-wrap{
+    width: 100%;
+    height: 90px;
+    margin-top: 16px;
+  }
+  .ecg-wrap svg{ display: block; width: 100%; height: 100%; }
+  .ecg-line{
+    fill: none;
+    stroke: var(--coral);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 3.2s ease-out forwards, glow 2.5s ease-in-out infinite 3.2s;
+  }
+  @keyframes draw{
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes glow{
+    0%, 100% { opacity: 1; }
+    50% { opacity: .55; }
+  }
+
+  .hero .meta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    padding: 28px 0 36px;
+    border-top: 1px solid rgba(250,248,243,0.12);
+  }
+  .hero .meta span.k{ color: var(--sage-mid); margin-right: 8px; }
+  .hero .meta a{ color: var(--paper); border-color: rgba(250,248,243,0.3); }
+  .hero .meta a:hover{ color: var(--coral); border-color: var(--coral); }
+
+  /* ===== Sections ===== */
+  section{
+    padding: 72px 0;
+    border-bottom: 1px solid var(--sage-line);
+  }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--sage-line);
+  }
+
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 36px;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ===== About ===== */
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 48px;
+  }
+  .about p{ margin-bottom: 16px; }
+  .about p:last-child{ margin-bottom: 0; }
+
+  .strengths-card{
+    background: var(--sage-deep);
+    color: var(--paper);
+    border-radius: 4px;
+    padding: 28px;
+  }
+  .strengths-card h3{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--sage-mid);
+    margin-bottom: 18px;
+  }
+  .strengths-card ul{ list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .strengths-card li{
+    font-size: 15px;
+    padding-left: 18px;
+    position: relative;
+  }
+  .strengths-card li::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 6px; height: 6px;
+    background: var(--coral);
+    border-radius: 50%;
+  }
+
+  .education{
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--tag-bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--coral);
+  }
+  .education .deg{ font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .education .school{ color: var(--sage-deep); font-size: 14.5px; }
+  .education .grad{ font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--sage-mid); margin-top: 8px; }
+
+  /* ===== Skills ===== */
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0;
+    border: 1px solid var(--sage-line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .skill-group{
+    padding: 24px;
+    border-right: 1px solid var(--sage-line);
+    border-bottom: 1px solid var(--sage-line);
+  }
+  .skill-group h3{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .skill-group .items{ font-size: 15px; line-height: 1.85; }
+
+  /* ===== Projects ===== */
+  .project{
+    padding: 36px 0;
+    border-top: 1px solid var(--sage-line);
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 24px;
+  }
+  .project:first-of-type{ border-top: none; padding-top: 0; }
+  .project-id{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--sage-mid);
+    padding-top: 4px;
+  }
+  .project-id .n{
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink-dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .project-body h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 23px;
+    margin-bottom: 10px;
+  }
+  .project-body p{ margin-bottom: 14px; max-width: 600px; }
+  .tech-tags{ display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .tech-tags span{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: var(--tag-bg);
+    color: var(--sage-deep);
+    padding: 4px 11px;
+    border-radius: 3px;
+  }
+  .project-shot{
+    margin-top: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--sage-line);
+  }
+  .project-shot img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .project-gallery{
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .project-gallery img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--sage-line);
+    aspect-ratio: 4/3;
+  }
+  @media (max-width: 600px){
+    .project-gallery{ grid-template-columns: repeat(2, 1fr); }
+  }
+  .repo-link{ font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+
+  @media (max-width: 600px){
+    .project{ grid-template-columns: 1fr; gap: 8px; }
+    .project-id{ display: flex; align-items: baseline; gap: 8px; }
+    .project-id .n{ font-size: 24px; margin-bottom: 0; }
+  }
+
+  /* ===== Internship ===== */
+  .internship-card{
+    background: var(--ink-dark);
+    color: var(--paper);
+    border-radius: 4px;
+    padding: 32px;
+  }
+  .internship-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .internship-head h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .internship-head .org{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--coral);
+  }
+  .internship-card p{ color: var(--sage-mid); max-width: 620px; }
+
+  /* ===== Certifications ===== */
+  .cert-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--sage-line);
+  }
+  .cert-row:last-of-type{ border-bottom: none; }
+  .cert-row .status{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--coral);
+    background: var(--tag-bg);
+    padding: 4px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .cert-row .name{ font-size: 15.5px; font-weight: 500; }
+
+  .languages{
+    margin-top: 32px;
+    display: flex;
+    gap: 48px;
+  }
+  .languages .lang-label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--sage-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .languages .lang-value{ font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; }
+
+  /* ===== Contact ===== */
+  .contact{ background: var(--ink-dark); color: var(--paper); padding-bottom: 100px; }
+  .contact .section-label{ color: var(--coral); }
+  .contact .section-label::after{ background: rgba(250,248,243,0.15); }
+  .contact h2{ color: var(--paper); }
+  .contact p.lead{ max-width: 540px; margin-bottom: 40px; color: var(--sage-mid); }
+  .contact-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(250,248,243,0.12);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .contact-item{ background: var(--ink-dark); padding: 24px; }
+  .contact-item .label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--sage-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .contact-item .value{ font-size: 17px; font-weight: 500; }
+  .contact-item a{ color: var(--paper); border-color: rgba(250,248,243,0.3); word-break: break-word; }
+  .contact-item a:hover{ color: var(--coral); border-color: var(--coral); }
+
+  footer{
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--sage-mid);
+    background: var(--ink-dark);
+    padding: 28px 0 56px;
+  }
+
+  @media (max-width: 700px){
+    .about-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .hero{ padding-top: 60px; }
+    section{ padding: 48px 0; }
+    h2{ font-size: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .ecg-line{ animation: none; stroke-dashoffset: 0; }
+    .pulse-dot{ animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="pulse-dot"></span> open to junior developer opportunities</div>
+      <h1>Shaikhah<br>Alnaimy</h1>
+      <div class="role">Software Developer — Full Stack Developer</div>
+
+      <div class="ecg-wrap" aria-hidden="true">
+        <svg viewBox="0 0 800 90" preserveAspectRatio="none">
+          <path class="ecg-line" d="M0,45 L120,45 L145,45 L160,15 L180,75 L200,45 L230,45 L400,45 L420,45 L440,20 L460,70 L480,45 L510,45 L800,45" />
+        </svg>
+      </div>
+
+      <div class="meta">
+        <div><span class="k">Location</span>Al Khobar, Saudi Arabia</div>
+        <div><span class="k">Email</span><a href="mailto:shaikah.alnimie@gmail.com">shaikah.alnimie@gmail.com</a></div>
+        <div><span class="k">Phone</span>+966 53 254 2750</div>
+        <div><span class="k">LinkedIn</span><a href="http://www.linkedin.com/in/shaikah-alnimie-39071a373" target="_blank" rel="noopener">in/shaikah-alnimie-39071a373</a></div>
+        <div><span class="k">GitHub</span><a href="https://github.com/shaiJN" target="_blank" rel="noopener">github.com/shaiJN</a></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="section-label">01 — About</div>
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="about">
+          <p>I'm a Diploma graduate in Smart Device Applications and Programming from Imam Abdulrahman Bin Faisal University, with hands-on experience building software across mobile, web, and data platforms. Through practical training at King Fahd University Hospital in Al Khobar, I worked on real healthcare technology projects spanning automation, dashboard reporting, and patient-facing systems.</p>
+          <p>My work covers mobile applications, web applications, automation workflows, interactive dashboards, and chatbot solutions. I'm driven by a genuine interest in software development, artificial intelligence, and automation — and by the challenge of turning everyday workflow problems into solutions that save time and improve people's experience.</p>
+          <p>I bring creative problem-solving, attention to detail, and a self-driven approach to learning new tools and technologies. I take initiative, lead when needed, and adapt quickly to new environments — qualities shaped by working in a fast-paced hospital setting.</p>
+
+          <div class="education">
+            <div class="deg">Diploma in Smart Device Applications and Programming</div>
+            <div class="school">Imam Abdulrahman Bin Faisal University</div>
+            <div class="grad">Expected graduation: 2026</div>
+          </div>
+        </div>
+
+        <div class="strengths-card">
+          <h3>Core strengths</h3>
+          <ul>
+            <li>Creative problem-solving</li>
+            <li>Leadership</li>
+            <li>Attention to detail</li>
+            <li>Self-learning</li>
+            <li>Adaptability</li>
+            <li>Continuous growth</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <div class="section-label">02 — Skills</div>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="items">Java, Python, C#, Swift, JavaScript, PHP, XML, XAML, HTML</div>
+        </div>
+        <div class="skill-group">
+          <h3>Database</h3>
+          <div class="items">SQL</div>
+        </div>
+        <div class="skill-group">
+          <h3>Web</h3>
+          <div class="items">HTML, CSS, JavaScript, PHP</div>
+        </div>
+        <div class="skill-group">
+          <h3>Frameworks & IDEs</h3>
+          <div class="items">.NET MAUI, Visual Studio, Android Studio, Xcode</div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools & Platforms</h3>
+          <div class="items">Power BI, Power Automate, SharePoint, Excel, Git, GitHub, Figma</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <div class="section-label">03 — Selected Work</div>
+      <h2>Projects</h2>
+
+      <div class="project">
+        <div class="project-id"><span class="n">01</span>of 06</div>
+        <div class="project-body">
+          <h3>Health Balance App</h3>
+          <p>A cross-platform mobile health-tracking app that helps users build healthier habits by logging water intake, sleep patterns, mood, and daily step count in one place.</p>
+          <div class="tech-tags"><span>.NET MAUI</span><span>C#</span><span>XAML</span></div>
+          <div class="repo-link"><a href="https://github.com/shaiJN/HealthBalance-App" target="_blank" rel="noopener">github.com/shaiJN/HealthBalance-App →</a></div>
+          <div class="project-shot">
+            <img src="images/health-balance.png" alt="Health Balance App home screen with Mood, Steps, Sleep, and Water Intake trackers">
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-id"><span class="n">02</span>of 06</div>
+        <div class="project-body">
+          <h3>Emergency Room Screen System</h3>
+          <p>A two-part healthcare monitoring system: nurses log adult and pediatric patient counts in beds or waiting areas, with the data displayed in real time on an emergency department screen to improve visibility and workflow management.</p>
+          <div class="tech-tags"><span>C#</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <div class="repo-link"><a href="https://github.com/shaiJN/EmergencyRoomScreen-System" target="_blank" rel="noopener">github.com/shaiJN/EmergencyRoomScreen-System →</a></div>
+          <div class="project-gallery">
+            <img src="images/er-nurses.png" alt="Nurses page for entering adult and pediatric patient counts and triage cases">
+            <img src="images/er-patient.png" alt="Patient page display showing adults and children in bed and not in bed">
+            <img src="images/er-triage.png" alt="Triage status board showing red, orange, yellow, light green, and dark green case counts">
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-id"><span class="n">03</span>of 06</div>
+        <div class="project-body">
+          <h3>Gym Management System</h3>
+          <p>A web-based platform for gym members to register, sign in, manage their personal information, and book fitness classes through a clean, user-friendly interface.</p>
+          <div class="tech-tags"><span>PHP</span><span>HTML</span><span>CSS</span></div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-id"><span class="n">04</span>of 06</div>
+        <div class="project-body">
+          <h3>Patient Analytics Dashboard</h3>
+          <p>An interactive Power BI dashboard surfacing healthcare insights — patient demographics, weight distribution, nationality breakdown, and medication utilization trends — to support data-driven decisions.</p>
+          <div class="tech-tags"><span>Power BI</span></div>
+          <div class="project-shot">
+            <img src="images/patient-dashboard.png" alt="Power BI dashboard showing patient demographics, nationality breakdown, age distribution, and medication utilization trends">
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-id"><span class="n">05</span>of 06</div>
+        <div class="project-body">
+          <h3>Medical Report Automation Workflow</h3>
+          <p>An automated workflow that pulls doctor and report details from Excel and sends reports by email. Staff upload files to SharePoint and distribute reports with a single click, cutting manual effort significantly.</p>
+          <div class="tech-tags"><span>Power Automate</span><span>SharePoint</span><span>Excel</span></div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-id"><span class="n">06</span>of 06</div>
+        <div class="project-body">
+          <h3>Healthcare Chatbot (MVP)</h3>
+          <p>A Python-based chatbot that helps patients check appointment availability using a patient ID or medical record number, view clinic schedules, get answers to common questions, and find contact information.</p>
+          <div class="tech-tags"><span>Python</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Internship -->
+  <section class="internship" id="experience">
+    <div class="wrap">
+      <div class="section-label">04 — Experience</div>
+      <h2>Internship Experience</h2>
+      <div class="internship-card">
+        <div class="internship-head">
+          <h3>Internship Trainee</h3>
+          <span class="org">King Fahd University Hospital — Al Khobar</span>
+        </div>
+        <p>Contributed to software development, automation, dashboard reporting, and healthcare systems projects. Worked hands-on with Power Automate, Power BI, and SharePoint to streamline administrative workflows, and helped build a real-time emergency department display system as part of broader process-improvement initiatives.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="certifications" id="certifications">
+    <div class="wrap">
+      <div class="section-label">05 — Certifications</div>
+      <h2>Certifications</h2>
+      <div class="cert-row">
+        <span class="status">In progress</span>
+        <span class="name">AI Professional Certificate — Coursera</span>
+      </div>
+
+      <div class="languages">
+        <div>
+          <span class="lang-label">Arabic</span>
+          <span class="lang-value">Native</span>
+        </div>
+        <div>
+          <span class="lang-label">English</span>
+          <span class="lang-value">Intermediate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-label">06 — Contact</div>
+      <h2>Let's work together</h2>
+      <p class="lead">I'm currently looking for Junior Software Developer or Full Stack Developer roles where I can keep building practical, user-focused software. Feel free to reach out — I'd love to hear from you.</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <span class="value"><a href="mailto:shaikah.alnimie@gmail.com">shaikah.alnimie@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Phone</span>
+          <span class="value">+966 53 254 2750</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Location</span>
+          <span class="value">Al Khobar, Saudi Arabia</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">LinkedIn</span>
+          <span class="value"><a href="http://www.linkedin.com/in/shaikah-alnimie-39071a373" target="_blank" rel="noopener">View Profile</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="label">GitHub</span>
+          <span class="value"><a href="https://github.com/shaiJN" target="_blank" rel="noopener">github.com/shaiJN</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Shaikhah Alnaimy — Built with care.
+  </footer>
+
+</body>
+</html>
